@@ -1,0 +1,64 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Neighbourhood Watch</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">News</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'notifications' %}">Alerts</a>
+          <hr>
+          <a class="dropdown-item" href="{% url 'blog' %}">Neighbourhood Posts</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Amenities</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'authorities' %}">Authorities</a>
+          <hr>
+          <a class="dropdown-item" href="{% url 'businesses' %}">Businesses</a>
+          <hr>
+          <a class="dropdown-item" href="{% url 'health' %}">Health Services</a>
+        </div>
+      </li>
+
+      {% if user.is_authenticated %}
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">My Profile</a>
+        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="{% url 'my-profile' %}">Profile</a>
+          <hr>
+          <a class="dropdown-item" href="{% url 'update-profile' %}">Edit Profile</a>
+          <hr>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/accounts/login">Sign In</a>
+      </li>
+      {% endif %}
+      {% if user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link" href="/admin">Admin</a>
+      </li>
+      {% endif %}
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results'%}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="blog">
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
