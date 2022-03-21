@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+<div class="container">
+  <h4 class="card-title mt-3 text-center"><strong>{{blog.title}}</strong></h4>
+  <a href="/user/{{blog.username}}">
+    <h6 class="card-subtitle mb-2 text-muted text-center">Posted by {{blog.username}}</h6>
+  </a>
+  <div class="card">
+    <img class="card-img-top" src="{{blog.image.url}}">
+
+    <div class="card-body">
+
+      <p class="card-text">{{blog.post | safe}}</p>
+    </div>
+    <div class="card-footer">
+      {% if comments%}
+      <h4 class="text-center">Comments</h4>
+      {% for comment in comments %}
+      <p>
+        <strong>{{comment.username.username}}</strong> {{comment.comment}}
+      </p>
+      {% endfor %}
+
+      {%else %}
+      <h3 class="text-center">No comments made for this blog post yet</h3>
+      <hr>
+      {% endif %}
+
+      <form action="/view/blog/{{blog.id}}" method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+
+        {% bootstrap_form form%}
+        <div class="text-center">
+          <input id="votes-input" type="submit" class="btn btn-success btn-lg" value="Post">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
