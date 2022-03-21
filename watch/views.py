@@ -130,8 +130,8 @@ def update_profile(request):
 
     return redirect('Index')
 
-  elif Profile.objects.get(username=current_user):
-    profile = Profile.objects.get(username=current_user)
+  elif User.objects.get(username=current_user):
+    profile = User.objects.get(username=current_user)
     form = ProfileForm(instance=profile)
   else:
     form = ProfileForm()
