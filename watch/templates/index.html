@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 collage">
+      <a href="{% url 'notifications' %}">
+        <img src="{% static 'img/alerts.jpg' %}" alt="" class="card-img-top">
+        <!-- <h4 class="centered">Alerts</h4> -->
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 collage">
+      <a href="{% url 'blog' %}">
+        <img src="{% static 'img/neighbourhood.jpg' %}" alt="" class="card-img-top">
+        <!-- <h4 class="centered">Neighbourhood Posts</h4> -->
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 collage">
+      <a href="{% url 'health' %}">
+        <img src="{% static 'img/health.jpg' %}" alt="" class="card-img-top">
+        <h4 class="centered">Health Services</h4>
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 collage">
+      <a href="{% url 'businesses' %}">
+        <img src="{% static 'img/business.jpg' %}" alt="" class="card-img-top">
+        <h4 class="centered">Businesses</h4>
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 collage">
+      <a href="{% url 'authorities' %}">
+        <img src="{% static 'img/authorities.jpg' %}" alt="" class="card-img-top">
+        <h4 class="centered">Authorities</h4>
+      </a>
+    </div>
+  </div>
+</div>
+<style>
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5%;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .centered:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .collage {
+    padding: 0 !important;
+  }
+</style>
+{% endblock %}
