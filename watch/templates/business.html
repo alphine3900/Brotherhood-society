@@ -17,6 +17,7 @@
           <div class="text-center">
             <form action="{% url 'new-business' %}" method="post" enctype="multipart/form-data">
               {% csrf_token %}
+
               {% bootstrap_form form %}
 
               <div class="form-group">
