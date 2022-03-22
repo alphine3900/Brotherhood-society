@@ -37,7 +37,7 @@ class notifications(models.Model):
   notification = HTMLField()
   priority = models.CharField(max_length=15, choices=Priority, default="Informational")
   author = models.ForeignKey(User, on_delete=models.CASCADE)
-  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE
+  neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,null=True,blank=True
   )
   post_date = models.DateTimeField(auto_now_add=True)
 
