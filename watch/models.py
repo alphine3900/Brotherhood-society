@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from tinymce.models import HTMLField
 import datetime as dt
-from django.utils.six import python_2_unicode_compatible
+
 from django.db.models import Q
 
 Priority=(
